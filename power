@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+
+class Power  {
+   
+public static int power(int n,int t){
+
+   if(t==0)
+      return 1;
+
+   return n*power(n,t-1);  
+}
+
+
+public static void main(String... args)  throws Exception {
+   
+   Scanner sc = new Scanner(System.in);
+   int number = sc.nextInt();
+   int time = sc.nextInt();
+
+   System.out.println(power(number,time));   
+ 
+   }
+}
