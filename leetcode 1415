@@ -1,0 +1,27 @@
+class Solution {
+    ArrayList<String> result =new ArrayList();;
+    
+    public String getHappyString(int n, int k) {
+    backtracking(new StringBuilder(),n);
+    return (result.size()<k)?"":result.get(k-1);
+        
+    }
+    
+    
+    public void backtracking(StringBuilder txt,int n)
+    {
+       if(txt.length()==n) {
+           result.add(txt.toString());
+           return;
+       }
+        
+       for(int i=0;i<3;i++)  {
+          if(txt.length()>=1 && txt.charAt(txt.length()-1)==(char)(i+97))
+              continue;
+           
+          txt.append((char)(i+97));
+          backtracking(txt,n);
+          txt.setLength(txt.length()-1);       
+       }       
+    }
+}
