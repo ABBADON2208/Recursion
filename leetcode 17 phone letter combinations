@@ -1,0 +1,29 @@
+class Solution {
+    List<String> result = new ArrayList<>();
+    String[] array = {"-1","-1","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    
+    public List<String> letterCombinations(String digits) {
+        
+    if(digits.length()==0)
+        return result;
+        
+        
+    backtrack(digits,0,new StringBuilder());
+    return result;
+    }
+    
+    public void backtrack(String digits,int index,StringBuilder txt){
+     
+    if(index>=digits.length()){
+        result.add(txt.toString());
+        return;
+    }
+    
+    String value = array[digits.charAt(index)-48];
+        
+    for(char ch : value.toCharArray()) {
+      txt.append(ch);
+      backtrack(digits,index+1,txt);
+      txt.setLength(txt.length()-1); }   
+    }
+}
