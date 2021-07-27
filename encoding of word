@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(System.in);
+    String str=sc.next();
+    printEncodings(str,new StringBuilder(),0);
+    }
+
+    public static void printEncodings(String str,StringBuilder asf,int index) {
+       if(index==str.length()){
+           System.out.println(asf.toString());
+           return;
+       }
+       
+       int number=0;
+       
+       for(;index<str.length();index++){
+           
+           char ch = str.charAt(index);
+           number=number*10+(ch-'0');
+           
+           if(number==0 || number>26) return;
+           
+           asf.append((char)(number+96));
+           printEncodings(str,asf,index+1);
+           asf.setLength(asf.length()-1);
+       }
+    }
+}
