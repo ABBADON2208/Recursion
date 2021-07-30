@@ -1,0 +1,45 @@
+class Solution {
+    String result="";
+    int max=-1;
+    
+    
+    public String largestTimeFromDigits(int[] arr) {
+    
+    backTrack(arr,"",new HashSet<Integer>()); 
+    return result;
+    }
+    
+    public void backTrack(int[] arr,String txt,HashSet<Integer> list) {
+        
+    if(list.size()==4){
+        check(txt);
+        return;
+    }    
+       
+        
+    for(int i=0;i<arr.length;i++) {
+        
+        if(!list.contains(i))  {
+        list.add(i);
+        backTrack(arr,txt+arr[i],list);
+        list.remove(i);   
+        }  
+    }}
+    
+    
+    public void check(String txt){
+        int value1 = Integer.parseInt(txt.substring(0,2));
+        int value2 = Integer.parseInt(txt.substring(2));
+        
+       
+        if(value1<=23 && value2<=59){
+        if(value1*60+value2>max){
+            max=value1*60+value2;
+            result="";
+            result+=(value1<=9)?"0":"";
+            result+=String.valueOf(value1)+":";
+            result+=(value2<=9)?"0":"";
+            result+=String.valueOf(value2);
+        }}   
+    } 
+}
